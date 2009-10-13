@@ -100,12 +100,10 @@ sub _body {
     my $self = shift;
     my $body = $self->body;
        $body = [] unless defined $body;
-    if (ref $body eq 'GLOB' or Scalar::Util::blessed($body) && $body->can('getline')) {
-        return $body;
-    } elsif (ref $body eq 'ARRAY') {
-        return $body;
-    } else {
+    if (!ref $body or Scalar::Util::blessed($body) && overload::Method($body, q(""))) {
         return [ $body ];
+    } else {
+        return $body;
     }
 }
 
