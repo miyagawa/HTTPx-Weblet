@@ -5,7 +5,7 @@ readme_from 'lib/Plack/Request.pm';
 requires 'CGI::Simple::Cookie';
 requires 'LWP';
 requires 'URI::QueryParam';
-requires 'HTTP::Body';
+requires 'HTTP::Body', 1.05;
 requires 'Class::Accessor::Fast';
 requires 'CGI::Simple::Cookie';
 requires 'HTTP::Message::PSGI';
