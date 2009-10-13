@@ -1,0 +1,169 @@
+NAME
+    Plack::Request - Portable HTTP request object from PSGI env hash
+
+SYNOPSIS
+      use Plack::Request;
+
+      sub psgi_handler {
+          my $env = shift;
+          my $req = Plack::Request->new($env);
+          my $res = $req->new_response(200);
+          $res->content_type('text/html');
+          $res->body("Hello World");
+          return $res->finalize;
+      }
+
+DESCRIPTION
+    Plack::Request provides a consistent API for request objects across web
+    server environments.
+
+CAVEAT
+    Note that this module is intended to be used by web application
+    framework developers rather than application developers (end users).
+    Writing your web application directly using Plack::Request is certainly
+    possible but it's like doing so with mod_perl's Apache::Request: yet too
+    low level. You're encouraged to use one of the web application
+    frameworks that support PSGI, or use HTTP::Engine if you want to write a
+    micro web server application.
+
+METHODS
+  new
+        Plack::Request->new( $psgi_env );
+
+ATTRIBUTES
+    address
+        Returns the IP address of the client.
+
+    cookies
+        Returns a reference to a hash containing the cookies
+
+    method
+        Contains the request method ("GET", "POST", "HEAD", etc).
+
+    protocol
+        Returns the protocol (HTTP/1.0 or HTTP/1.1) used for the current
+        request.
+
+    request_uri
+        Returns the request uri (like $ENV{REQUEST_URI})
+
+    query_parameters
+        Returns a reference to a hash containing query string (GET)
+        parameters. Values can be either a scalar or an arrayref containing
+        scalars.
+
+    secure
+        Returns true or false, indicating whether the connection is secure
+        (https).
+
+    uri Returns a URI object for the current request. Stringifies to the URI
+        text.
+
+    user
+        Returns REMOTE_USER.
+
+    raw_body
+        Returns string containing body(POST).
+
+    headers
+        Returns an HTTP::Headers object containing the headers for the
+        current request.
+
+    hostname
+        Returns the hostname of the client.
+
+    parameters
+        Returns a reference to a hash containing GET and POST parameters.
+        Values can be either a scalar or an arrayref containing scalars.
+
+    uploads
+        Returns a reference to a hash containing uploads. Values can be
+        either a Plack::Request::Upload object, or an arrayref of
+        Plack::Request::Upload objects.
+
+    content_encoding
+        Shortcut to $req->headers->content_encoding.
+
+    content_length
+        Shortcut to $req->headers->content_length.
+
+    content_type
+        Shortcut to $req->headers->content_type.
+
+    header
+        Shortcut to $req->headers->header.
+
+    referer
+        Shortcut to $req->headers->referer.
+
+    user_agent
+        Shortcut to $req->headers->user_agent.
+
+    cookie
+        A convenient method to access $req->cookies.
+
+            $cookie  = $req->cookie('name');
+            @cookies = $req->cookie;
+
+    param
+        Returns GET and POST parameters with a CGI.pm-compatible param
+        method. This is an alternative method for accessing parameters in
+        $req->parameters.
+
+            $value  = $req->param( 'foo' );
+            @values = $req->param( 'foo' );
+            @params = $req->param;
+
+        Like CGI, and unlike earlier versions of Catalyst, passing multiple
+        arguments to this method, like this:
+
+            $req->param( 'foo', 'bar', 'gorch', 'quxx' );
+
+        will set the parameter "foo" to the multiple values "bar", "gorch"
+        and "quxx". Previously this would have added "bar" as another value
+        to "foo" (creating it if it didn't exist before), and "quxx" as
+        another value for "gorch".
+
+    path
+        Returns the path, i.e. the part of the URI after $req->base, for the
+        current request.
+
+    upload
+        A convenient method to access $req->uploads.
+
+            $upload  = $req->upload('field');
+            @uploads = $req->upload('field');
+            @fields  = $req->upload;
+
+            for my $upload ( $req->upload('field') ) {
+                print $upload->filename;
+            }
+
+    uri_with
+        Returns a rewritten URI object for the current request. Key/value
+        pairs passed in will override existing parameters. Unmodified pairs
+        will be preserved.
+
+    as_http_request
+        convert Plack::Request to HTTP::Request.
+
+    new_response
+          my $res = $req->new_response;
+
+        Creates a new Plack::Response by default. Handy to remove dependency
+        on Plack::Response in your code for easy subclassing and duck typing
+        in web application frameworks, as well as overriding Response
+        generation in middlewares.
+
+AUTHORS
+    Kazuhiro Osawa
+
+    Tokuhiro Matsuno
+
+SEE ALSO
+    Plack::Response HTTP::Request, Catalyst::Request
+
+LICENSE
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+
