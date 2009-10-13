@@ -1,6 +1,9 @@
 package Plack::Request;
 use strict;
 use warnings;
+use 5.008_001;
+our $VERSION = "0.01";
+
 use HTTP::Headers;
 use URI::QueryParam;
 use Carp ();
@@ -8,8 +11,6 @@ use Carp ();
 use Socket qw[AF_INET inet_aton]; # for _build_hostname
 use Plack::Request::Upload;
 use URI;
-
-our $VERSION = '0.01';
 
 sub new {
     my($class, $env) = @_;
