@@ -356,8 +356,8 @@ sub _build_uri  {
 
     my $uri = ($env->{'psgi.url_scheme'} || "http") .
         "://" .
-        ($env->{HTTP_HOST} || $env->{SERVER_NAME} || "") .
-        ":" . ($env->{SERVER_PORT} || 80) . "/" .
+        ($env->{HTTP_HOST} || ($env->{SERVER_NAME} || "") . ":" . ($env->{SERVER_PORT} || 80)) .
+        "/" .
         ($path || "") .
         ($env->{QUERY_STRING} ? "?$env->{QUERY_STRING}" : "");
 
