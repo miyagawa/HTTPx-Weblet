@@ -1,4 +1,5 @@
 use Test::More;
+use Test::Requires qw(Plack::Test);
 use Plack::Test;
 use Plack::Request;
 use HTTP::Request::Common;
