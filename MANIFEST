@@ -33,6 +33,7 @@ t/Plack-Request/body.t
 t/Plack-Request/can.t
 t/Plack-Request/content.t
 t/Plack-Request/cookie.t
+t/Plack-Request/double_port.t
 t/Plack-Request/hostname.t
 t/Plack-Request/many_upload.t
 t/Plack-Request/new.t
