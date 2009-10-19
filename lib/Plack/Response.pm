@@ -3,6 +3,7 @@ use strict;
 use warnings;
 our $VERSION = '0.01';
 use base qw/Class::Accessor::Fast/;
+use Carp ();
 use Scalar::Util ();
 use CGI::Simple::Cookie ();
 use HTTP::Headers;
@@ -28,6 +29,7 @@ sub headers {
     if (@_) {
         my $headers = shift;
         if (ref $headers eq 'ARRAY') {
+            Carp::carp("Odd number of headers") if @$headers % 2 != 0;
             $headers = HTTP::Headers->new(@$headers);
         } elsif (ref $headers eq 'HASH') {
             $headers = HTTP::Headers->new(%$headers);
