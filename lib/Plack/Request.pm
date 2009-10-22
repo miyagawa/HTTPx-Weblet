@@ -441,10 +441,18 @@ web server environments.
 Note that this module is intended to be used by web application
 framework developers rather than application developers (end
 users). Writing your web application directly using Plack::Request is
-certainly possible but it's like doing so with mod_perl's
-Apache::Request: yet too low level. You're encouraged to use one of
-the web application frameworks that support PSGI, or use
-L<HTTP::Engine> if you want to write a micro web server application.
+certainly possible but not recommended: it's like doing so with
+mod_perl's Apache::Request: yet too low level.
+
+If you're writing a web application, not a framework, then you're
+encouraged to use one of the web application frameworks that support
+PSGI, or use L<HTTP::Engine> if you want to write a micro web server
+application.
+
+Also, even if you're a framework developer, you probably want to
+handle Cookies and file uploads in your own way: Plack::Request gives
+you a simple API to deal with these things but ultimately you probably
+want to implement those in your own code.
 
 =head1 METHODS
 
