@@ -1,5 +1,8 @@
 Revision history for Perl extension Plack::Request
 
+0.04  Wed Oct 21 21:23:08 PDT 2009
+        - Removed uri_with and as_http_request: YAGNI
+        
 0.03  Sun Oct 18 14:06:58 PDT 2009
         - Fixed doubled ports in $req->uri (Thanks to fullermd)
 
