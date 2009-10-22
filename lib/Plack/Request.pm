@@ -373,12 +373,6 @@ sub new_response {
     Plack::Response->new(@_);
 }
 
-sub as_http_request {
-    my $self = shift;
-    require HTTP::Request;
-    HTTP::Request->new( $self->method, $self->uri, $self->headers, $self->raw_body );
-}
-
 sub content {
     my ( $self, @args ) = @_;
 
@@ -567,10 +561,6 @@ A convenient method to access $req->uploads.
     for my $upload ( $req->upload('field') ) {
         print $upload->filename;
     }
-
-=item as_http_request
-
-convert Plack::Request to HTTP::Request.
 
 =item new_response
 

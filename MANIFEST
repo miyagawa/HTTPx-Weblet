@@ -28,7 +28,6 @@ MANIFEST			This list of files
 META.yml
 README
 t/00_compile.t
-t/Plack-Request/as_http_request.t
 t/Plack-Request/body.t
 t/Plack-Request/content.t
 t/Plack-Request/cookie.t
