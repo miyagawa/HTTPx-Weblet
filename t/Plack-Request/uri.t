@@ -5,7 +5,7 @@ use IO::Scalar;
 
 use t::Utils;
 
-plan tests => 4*blocks;
+plan tests => 2*blocks;
 
 filters {
     args            => ['yaml'],
@@ -31,18 +31,11 @@ run {
 
     is $req->uri, $block->expected_uri;
     is_deeply $req->query_parameters, $block->expected_params;
-    is $req->uri_with( $block->args || {} ), $block->expected;
-
-    tie *STDERR, 'IO::Scalar', \my $out;
-    $req->uri_with;
-    untie *STDERR;
-    like $out, qr/No arguments passed to uri_with()/;
 };
 
 __END__
 
 ===
---- args
 --- add_env
   HTTP_HOST: example.com
   SCRIPT_NAME: /
@@ -51,7 +44,6 @@ __END__
 --- expected_params: {}
 
 ===
---- args
 --- add_env
   HTTP_HOST: example.com
   SCRIPT_NAME: /test.c
@@ -60,7 +52,6 @@ __END__
 --- expected_params: {}
 
 ===
---- args
 --- add_env
   HTTP_HOST: example.com
   SCRIPT_NAME: /test.c
@@ -70,7 +61,6 @@ __END__
 --- expected_params: {}
 
 ===
---- args
 --- add_env
   HTTP_HOST: example.com
   SCRIPT_NAME: /test
@@ -81,7 +71,6 @@ __END__
 
 
 ===
---- args
 --- add_env
   HTTP_HOST: example.com
   SCRIPT_NAME: /exec/
@@ -90,7 +79,6 @@ __END__
 --- expected_params: {}
 
 ===
---- args
 --- add_env
   HTTP_HOST: example.com
   SCRIPT_NAME: /////exec/
@@ -99,7 +87,6 @@ __END__
 --- expected_params: {}
 
 ===
---- args
 --- add_env
   SERVER_NAME: example.com
 --- expected_uri: http://example.com/
@@ -107,14 +94,12 @@ __END__
 --- expected_params: {}
 
 ===
---- args
 --- add_env
 --- expected_uri: http:///
 --- expected: http:///
 --- expected_params: {}
 
 ===
---- args
 --- add_env
   HTTP_HOST: example.com
   SCRIPT_NAME: /

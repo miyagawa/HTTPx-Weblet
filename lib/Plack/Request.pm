@@ -367,28 +367,6 @@ sub _build_uri  {
 
 sub path { shift->uri->path(@_) }
 
-sub uri_with {
-    my($self, $args) = @_;
-    
-    Carp::carp( 'No arguments passed to uri_with()' ) unless $args;
-
-    for my $value (values %{ $args }) {
-        next unless defined $value;
-        for ( ref $value eq 'ARRAY' ? @{ $value } : $value ) {
-            $_ = "$_";
-            utf8::encode( $_ );
-        }
-    };
-    
-    my $uri = $self->uri->clone;
-    
-    $uri->query_form( {
-        %{ $uri->query_form_hash },
-        %{ $args },
-    } );
-    return $uri;
-}
-
 sub new_response {
     my $self = shift;
     require Plack::Response;
@@ -589,13 +567,6 @@ A convenient method to access $req->uploads.
     for my $upload ( $req->upload('field') ) {
         print $upload->filename;
     }
-
-
-=item uri_with
-
-Returns a rewritten URI object for the current request. Key/value pairs
-passed in will override existing parameters. Unmodified pairs will be
-preserved.
 
 =item as_http_request
 
