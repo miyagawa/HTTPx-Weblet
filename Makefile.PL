@@ -8,7 +8,8 @@ requires 'URI::QueryParam';
 requires 'HTTP::Body', 1.05;
 requires 'Class::Accessor::Fast';
 requires 'CGI::Simple::Cookie';
-requires 'HTTP::Message::PSGI';
+
+recommends 'HTTP::Message::PSGI';
 
 build_requires 'Test::More';
 use_test_base;

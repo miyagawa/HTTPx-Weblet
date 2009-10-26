@@ -1,8 +1,8 @@
 use strict;
+use Test::Requires qw(HTTP::Message::PSGI);
 use Test::More;
 use Plack::Request;
 use HTTP::Request::Common;
-use HTTP::Message::PSGI;
 
 my $raw_uri;
 
