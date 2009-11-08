@@ -1,5 +1,8 @@
 Revision history for Perl extension Plack::Request
 
+0.06  Sat Nov  7 20:43:17 PST 2009
+        - Fixed dependencies and inc/
+
 0.05  Mon Oct 26 15:44:38 PDT 2009
         - Make HTTP::Message::PSGI dep optional
 
