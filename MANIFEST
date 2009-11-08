@@ -14,11 +14,14 @@ inc/Module/Install/TestBase.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
 inc/Spiffy.pm
+inc/Sub/Uplevel.pm
 inc/Test/Base.pm
 inc/Test/Base/Filter.pm
 inc/Test/Builder.pm
 inc/Test/Builder/Module.pm
+inc/Test/Exception.pm
 inc/Test/More.pm
+inc/Test/Requires.pm
 lib/Plack/Request.pm
 lib/Plack/Request/BodyParser.pm
 lib/Plack/Request/Upload.pm
