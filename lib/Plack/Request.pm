@@ -32,6 +32,10 @@ sub user        { $_[0]->env->{REMOTE_USER} }
 sub request_uri { $_[0]->env->{REQUEST_URI} }
 sub url_scheme  { $_[0]->env->{'psgi.url_scheme'} }
 
+sub secure {
+    $_[0]->url_scheme eq 'https';
+}
+
 # we need better cookie lib?
 # http://mark.stosberg.com/blog/2008/12/cookie-handling-in-titanium-catalyst-and-mojo.html
 sub cookies {
@@ -458,8 +462,9 @@ Returns the request uri (like $ENV{REQUEST_URI})
 
 =item query_parameters
 
-Returns a reference to a hash containing query string (GET) parameters. Values can                                                    
-be either a scalar or an arrayref containing scalars.
+Returns a reference to a hash containing query string (GET)
+parameters. Values can be either a scalar or an arrayref containing
+scalars.
 
 =item secure
 
