@@ -26,7 +26,7 @@ test_psgi app => $app->to_app, client => sub {
     $res = $cb->(GET "http://localhost/foo/bar");
     is $res->content, '/bar';
 
-    my $res = $cb->(GET "http://localhost/xxx/yyy");
+    $res = $cb->(GET "http://localhost/xxx/yyy");
     is $res->content, '/xxx/yyy';
 };
 
