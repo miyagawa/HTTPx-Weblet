@@ -1,5 +1,9 @@
 Revision history for Perl extension Plack::Request
 
+0.08  Thu Dec  3 04:00:52 PST 2009
+        - Fixed a bug $req->path_info gets the path from full absolute URL rather than env's PATH_INFO
+        - Added $req->script_name
+
 0.07  Sun Nov 29 18:45:05 JST 2009
         - Added back $req->secure
         - Use Host: to construct $req->uri as well

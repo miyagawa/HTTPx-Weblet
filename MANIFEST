@@ -40,6 +40,7 @@ t/Plack-Request/many_upload.t
 t/Plack-Request/new.t
 t/Plack-Request/parameters.t
 t/Plack-Request/params.t
+t/Plack-Request/path_info.t
 t/Plack-Request/raw_body.t
 t/Plack-Request/raw_uri.t
 t/Plack-Request/readbody.t
