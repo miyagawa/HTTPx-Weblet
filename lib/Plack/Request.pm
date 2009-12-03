@@ -238,7 +238,9 @@ sub body_params  { shift->body_parameters(@_) }
 sub input        { shift->body(@_) }
 sub params       { shift->parameters(@_) }
 sub query_params { shift->query_parameters(@_) }
-sub path_info    { shift->path(@_) }
+
+sub path_info    { shift->env->{PATH_INFO} }
+sub script_name  { shift->env->{SCRIPT_NAME} }
 
 sub cookie {
     my $self = shift;
