@@ -31,6 +31,7 @@ sub port        { $_[0]->env->{SERVER_PORT} }
 sub user        { $_[0]->env->{REMOTE_USER} }
 sub request_uri { $_[0]->env->{REQUEST_URI} }
 sub url_scheme  { $_[0]->env->{'psgi.url_scheme'} }
+sub session     { $_[0]->env->{'plack.session'} }
 
 sub secure {
     $_[0]->url_scheme eq 'https';
