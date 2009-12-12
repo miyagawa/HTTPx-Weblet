@@ -7,6 +7,7 @@ requires 'HTTP::Headers';
 requires 'HTTP::Request';
 requires 'URI::QueryParam';
 requires 'HTTP::Body', 1.05;
+requires 'Class::Accessor::Fast';
 requires 'CGI::Simple::Cookie';
 
 recommends 'HTTP::Message::PSGI';
