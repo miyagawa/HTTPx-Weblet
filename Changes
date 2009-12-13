@@ -1,5 +1,8 @@
 Revision history for Perl extension Plack::Request
 
+0.09  Sun Dec 13 10:34:33 PST 2009
+        - Added $req->session accessor
+
 0.08  Thu Dec  3 04:00:52 PST 2009
         - Fixed a bug $req->path_info gets the path from full absolute URL rather than env's PATH_INFO
         - Added $req->script_name
