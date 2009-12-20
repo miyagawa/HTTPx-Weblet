@@ -401,14 +401,13 @@ Plack::Request - Portable HTTP request object from PSGI env hash
 
   use Plack::Request;
 
-  sub psgi_handler {
-      my $env = shift;
-      my $req = Plack::Request->new($env);
-      my $res = $req->new_response(200);
-      $res->content_type('text/html');
-      $res->body("Hello World");
-      return $res->finalize;
-  }
+  my $env = shift; # PSGI env
+  my $req = Plack::Request->new($env);
+
+  my $path_info = $req->path_info;
+  my $query     = $req->param('query');
+
+  my $res = $req->new_response(200); # new Plack::Response
 
 =head1 DESCRIPTION
 
