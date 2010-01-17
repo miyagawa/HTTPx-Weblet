@@ -1,4 +1,4 @@
-package Plack::Response;
+package Piglet::Response;
 use strict;
 use warnings;
 our $VERSION = '0.01';
@@ -140,16 +140,16 @@ __END__
 
 =head1 NAME
 
-Plack::Response - Portable HTTP Response object for PSGI response
+Piglet::Response - Portable HTTP Response object for PSGI response
 
 =head1 SYNOPSIS
 
-  use Plack::Response;
+  use Piglet::Response;
 
   sub psgi_handler {
       my $env = shift;
 
-      my $res = Plack::Response->new(200);
+      my $res = Piglet::Response->new(200);
       $res->content_type('text/html');
       $res->body("Hello World");
 
@@ -158,7 +158,7 @@ Plack::Response - Portable HTTP Response object for PSGI response
 
 =head1 DESCRIPTION
 
-Plack::Response allows you a way to create PSGI response array ref through a simple API.
+Piglet::Response allows you a way to create PSGI response array ref through a simple API.
 
 =head1 METHODS
 
@@ -166,12 +166,12 @@ Plack::Response allows you a way to create PSGI response array ref through a sim
 
 =item new
 
-  $res = Plack::Response->new;
-  $res = Plack::Response->new($status);
-  $res = Plack::Response->new($status, $headers);
-  $res = Plack::Response->new($status, $headers, $body);
+  $res = Piglet::Response->new;
+  $res = Piglet::Response->new($status);
+  $res = Piglet::Response->new($status, $headers);
+  $res = Piglet::Response->new($status, $headers, $body);
 
-Creates a new Plack::Response object.
+Creates a new Piglet::Response object.
 
 =item status
 
@@ -243,7 +243,7 @@ Tokuhiro Matsuno
 
 =head1 SEE ALSO
 
-L<Plack::Request>
+L<Piglet::Request>
 
 =head1 LICENSE
 

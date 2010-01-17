@@ -1,4 +1,4 @@
-package Plack::Request::Upload;
+package Piglet::Request::Upload;
 use strict;
 use warnings;
 BEGIN { require Carp }; # do not call Carp->import for performance
@@ -82,7 +82,7 @@ __END__
 
 =head1 NAME
 
-Plack::Request::Upload - handles file upload requests
+Piglet::Request::Upload - handles file upload requests
 
 =head1 METHODS
 

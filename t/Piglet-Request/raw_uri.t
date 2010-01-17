@@ -1,13 +1,13 @@
 use strict;
 use Test::Requires qw(HTTP::Message::PSGI);
 use Test::More;
-use Plack::Request;
+use Piglet::Request;
 use HTTP::Request::Common;
 
 my $raw_uri;
 
 my $app = sub {
-    my $req = Plack::Request->new(shift);
+    my $req = Piglet::Request->new(shift);
     $raw_uri = $req->raw_uri;
 };
 

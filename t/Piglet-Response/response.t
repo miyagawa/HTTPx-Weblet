@@ -1,10 +1,10 @@
 use strict;
 use warnings;
 use Test::More;
-use Plack::Response;
+use Piglet::Response;
 
 sub res {
-    my $res = Plack::Response->new;
+    my $res = Piglet::Response->new;
     my %v = @_;
     while (my($k, $v) = each %v) {
         $res->$k($v);

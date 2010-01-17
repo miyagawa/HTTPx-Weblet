@@ -1,4 +1,4 @@
-package Plack::Request::BodyParser;
+package Piglet::Request::BodyParser;
 use strict;
 use warnings;
 BEGIN { require Carp }; # do not call Carp->import for performance

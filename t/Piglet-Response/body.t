@@ -2,11 +2,11 @@ use strict;
 use warnings;
 use FindBin;
 use Test::More;
-use Plack::Response;
+use Piglet::Response;
 use URI;
 
 sub r($) {
-    my $res = Plack::Response->new(200);
+    my $res = Piglet::Response->new(200);
     $res->body(@_);
     return $res->finalize->[2];
 }

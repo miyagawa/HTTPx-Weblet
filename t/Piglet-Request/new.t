@@ -1,8 +1,8 @@
 use strict;
 use Test::More;
-use Plack::Request;
+use Piglet::Request;
 
-my $req = Plack::Request->new(+{
+my $req = Piglet::Request->new(+{
     REQUEST_METHOD    => 'GET',
     SERVER_PROTOCOL   => 'HTTP/1.1',
     SERVER_PORT       => 80,
@@ -15,7 +15,7 @@ my $req = Plack::Request->new(+{
     'psgi.url_scheme' => 'http',
 });
 
-isa_ok($req, 'Plack::Request');
+isa_ok($req, 'Piglet::Request');
 
 is($req->address, '127.0.0.1', 'address');
 is($req->method, 'GET', 'method');

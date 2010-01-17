@@ -1,7 +1,7 @@
 package t::Utils;
 use strict;
 use warnings;
-use Plack::Request;
+use Piglet::Request;
 
 use base qw/Exporter/;
 
@@ -19,7 +19,7 @@ sub req {
         SERVER_PORT       => 80,
         %args
     };
-    Plack::Request->new($env);
+    Piglet::Request->new($env);
 }
 
 1;
