@@ -1,12 +1,12 @@
 NAME
-    Plack::Request - Portable HTTP request object from PSGI env hash
+    Piglet::Request - Portable HTTP request object from PSGI env hash
 
 SYNOPSIS
-      use Plack::Request;
+      use Piglet::Request;
 
       sub psgi_handler {
           my $env = shift;
-          my $req = Plack::Request->new($env);
+          my $req = Piglet::Request->new($env);
           my $res = $req->new_response(200);
           $res->content_type('text/html');
           $res->body("Hello World");
@@ -14,13 +14,13 @@ SYNOPSIS
       }
 
 DESCRIPTION
-    Plack::Request provides a consistent API for request objects across web
+    Piglet::Request provides a consistent API for request objects across web
     server environments.
 
 CAVEAT
     Note that this module is intended to be used by web application
     framework developers rather than application developers (end users).
-    Writing your web application directly using Plack::Request is certainly
+    Writing your web application directly using Piglet::Request is certainly
     possible but not recommended: it's like doing so with mod_perl's
     Apache::Request: yet too low level.
 
@@ -30,13 +30,13 @@ CAVEAT
     application.
 
     Also, even if you're a framework developer, you probably want to handle
-    Cookies and file uploads in your own way: Plack::Request gives you a
+    Cookies and file uploads in your own way: Piglet::Request gives you a
     simple API to deal with these things but ultimately you probably want to
     implement those in your own code.
 
 METHODS
   new
-        Plack::Request->new( $psgi_env );
+        Piglet::Request->new( $psgi_env );
 
 ATTRIBUTES
     address
@@ -86,8 +86,8 @@ ATTRIBUTES
 
     uploads
         Returns a reference to a hash containing uploads. Values can be
-        either a Plack::Request::Upload object, or an arrayref of
-        Plack::Request::Upload objects.
+        either a Piglet::Request::Upload object, or an arrayref of
+        Piglet::Request::Upload objects.
 
     content_encoding
         Shortcut to $req->headers->content_encoding.

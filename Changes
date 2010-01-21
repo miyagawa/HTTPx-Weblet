@@ -1,4 +1,4 @@
-Revision history for Perl extension Plack::Request
+Revision history for Perl extension Piglet::Request
 
 0.09  Sun Dec 13 10:34:33 PST 2009
         - Added $req->session accessor
