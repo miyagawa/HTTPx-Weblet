@@ -1,10 +1,10 @@
 use strict;
 use warnings;
 use Test::More;
-use Piglet::Response;
+use HTTPx::Weblet::Response;
 
 {
-    my $res = Piglet::Response->new;
+    my $res = HTTPx::Weblet::Response->new;
     $res->redirect('http://www.google.com/');
     is $res->location, 'http://www.google.com/';
     is $res->code, 302;
@@ -13,7 +13,7 @@ use Piglet::Response;
 }
 
 {
-    my $res = Piglet::Response->new;
+    my $res = HTTPx::Weblet::Response->new;
     $res->redirect('http://www.google.com/', 301);
     is_deeply $res->finalize, [ 301, [ 'Location' => 'http://www.google.com/' ], [] ];
 }

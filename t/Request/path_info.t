@@ -2,11 +2,11 @@ use strict;
 use Test::More;
 use Test::Requires qw(Plack::Test Plack::App::URLMap);
 use Plack::Test;
-use Piglet::Request;
+use HTTPx::Weblet::Request;
 use HTTP::Request::Common;
 
 my $path_app = sub {
-    my $req = Piglet::Request->new(shift);
+    my $req = HTTPx::Weblet::Request->new(shift);
     my $res = $req->new_response(200);
     $res->content_type('text/plain');
     $res->content($req->path_info);

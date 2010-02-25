@@ -1,4 +1,4 @@
-package Piglet::Response;
+package HTTPx::Weblet::Response;
 use strict;
 use warnings;
 our $VERSION = '0.01';
@@ -140,16 +140,16 @@ __END__
 
 =head1 NAME
 
-Piglet::Response - Portable HTTP Response object for PSGI response
+HTTPx::Weblet::Response - Portable HTTP Response object for PSGI response
 
 =head1 SYNOPSIS
 
-  use Piglet::Response;
+  use HTTPx::Weblet::Response;
 
   sub psgi_handler {
       my $env = shift;
 
-      my $res = Piglet::Response->new(200);
+      my $res = HTTPx::Weblet::Response->new(200);
       $res->content_type('text/html');
       $res->body("Hello World");
 
@@ -158,7 +158,7 @@ Piglet::Response - Portable HTTP Response object for PSGI response
 
 =head1 DESCRIPTION
 
-Piglet::Response allows you a way to create PSGI response array ref through a simple API.
+HTTPx::Weblet::Response allows you a way to create PSGI response array ref through a simple API.
 
 =head1 METHODS
 
@@ -166,12 +166,12 @@ Piglet::Response allows you a way to create PSGI response array ref through a si
 
 =item new
 
-  $res = Piglet::Response->new;
-  $res = Piglet::Response->new($status);
-  $res = Piglet::Response->new($status, $headers);
-  $res = Piglet::Response->new($status, $headers, $body);
+  $res = HTTPx::Weblet::Response->new;
+  $res = HTTPx::Weblet::Response->new($status);
+  $res = HTTPx::Weblet::Response->new($status, $headers);
+  $res = HTTPx::Weblet::Response->new($status, $headers, $body);
 
-Creates a new Piglet::Response object.
+Creates a new HTTPx::Weblet::Response object.
 
 =item status
 
@@ -243,7 +243,7 @@ Tokuhiro Matsuno
 
 =head1 SEE ALSO
 
-L<Piglet::Request>
+L<HTTPx::Weblet::Request>
 
 =head1 LICENSE
 

@@ -1,7 +1,7 @@
 package t::Utils;
 use strict;
 use warnings;
-use Piglet::Request;
+use HTTPx::Weblet::Request;
 
 use base qw/Exporter/;
 
@@ -19,7 +19,7 @@ sub req {
         SERVER_PORT       => 80,
         %args
     };
-    Piglet::Request->new($env);
+    HTTPx::Weblet::Request->new($env);
 }
 
 1;

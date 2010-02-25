@@ -1,13 +1,13 @@
 use Test::More;
 use Test::Requires qw(Plack::Test);
 use Plack::Test;
-use Piglet::Request;
+use HTTPx::Weblet::Request;
 use HTTP::Request::Common;
 
 $Plack::Test::Impl = 'Server';
 
 my $app = sub {
-    my $req = Piglet::Request->new(shift);
+    my $req = HTTPx::Weblet::Request->new(shift);
     return [200, [], [ $req->uri ]];
 };
 

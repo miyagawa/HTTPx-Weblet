@@ -1,10 +1,10 @@
 use strict;
 use warnings;
 use Test::More;
-use Piglet::Response;
+use HTTPx::Weblet::Response;
 
 sub res {
-    my $res = Piglet::Response->new;
+    my $res = HTTPx::Weblet::Response->new;
     my %v = @_;
     while (my($k, $v) = each %v) {
         $res->$k($v);

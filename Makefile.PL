@@ -1,7 +1,7 @@
 use inc::Module::Install;
-name 'Plack-Request';
-all_from 'lib/Plack/Request.pm';
-readme_from 'lib/Plack/Request.pm';
+name 'HTTPx-Weblet';
+all_from 'lib/HTTPx/Weblet.pm';
+readme_from 'lib/HTTPx/Weblet.pm';
 requires 'CGI::Simple::Cookie';
 requires 'HTTP::Headers';
 requires 'HTTP::Request';

@@ -1,13 +1,13 @@
 use strict;
 use Test::Requires qw(HTTP::Message::PSGI);
 use Test::More;
-use Piglet::Request;
+use HTTPx::Weblet::Request;
 use HTTP::Request::Common;
 
 my $raw_uri;
 
 my $app = sub {
-    my $req = Piglet::Request->new(shift);
+    my $req = HTTPx::Weblet::Request->new(shift);
     $raw_uri = $req->raw_uri;
 };
 

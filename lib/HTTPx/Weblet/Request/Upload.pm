@@ -1,4 +1,4 @@
-package Piglet::Request::Upload;
+package HTTPx::Weblet::Request::Upload;
 use strict;
 use warnings;
 BEGIN { require Carp }; # do not call Carp->import for performance
@@ -82,7 +82,7 @@ __END__
 
 =head1 NAME
 
-Piglet::Request::Upload - handles file upload requests
+HTTPx::Weblet::Request::Upload - handles file upload requests
 
 =head1 METHODS
 

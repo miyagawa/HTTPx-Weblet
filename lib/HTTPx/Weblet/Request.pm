@@ -1,4 +1,4 @@
-package Piglet::Request;
+package HTTPx::Weblet::Request;
 use strict;
 use warnings;
 use 5.008_001;
@@ -9,7 +9,7 @@ use URI::QueryParam;
 use Carp ();
 
 use Socket qw[AF_INET inet_aton]; # for _build_hostname
-use Piglet::Request::Upload;
+use HTTPx::Weblet::Request::Upload;
 use URI;
 
 sub new {
@@ -73,8 +73,8 @@ sub query_parameters {
 sub _body_parser {
     my $self = shift;
     unless (defined $self->{_body_parser}) {
-        require Piglet::Request::BodyParser;
-        $self->{_body_parser} = Piglet::Request::BodyParser->new( $self->env );
+        require HTTPx::Weblet::Request::BodyParser;
+        $self->{_body_parser} = HTTPx::Weblet::Request::BodyParser->new( $self->env );
     }
     $self->{_body_parser};
 }
@@ -217,7 +217,7 @@ sub _build_uploads {
             my $headers = HTTP::Headers->new( %{ $upload->{headers} } );
             push(
                 @uploads,
-                Piglet::Request::Upload->new(
+                HTTPx::Weblet::Request::Upload->new(
                     headers  => $headers,
                     tempname => $upload->{tempname},
                     size     => $upload->{size},
@@ -376,15 +376,15 @@ sub path { shift->uri->path(@_) }
 
 sub new_response {
     my $self = shift;
-    require Piglet::Response;
-    Piglet::Response->new(@_);
+    require HTTPx::Weblet::Response;
+    HTTPx::Weblet::Response->new(@_);
 }
 
 sub content {
     my ( $self, @args ) = @_;
 
     if ( @args ) {
-        Carp::croak "The HTTP::Request method 'content' is unsupported when used as a writer, use Piglet::RequestBuilder";
+        Carp::croak "The HTTP::Request method 'content' is unsupported when used as a writer, use HTTPx::Weblet::RequestBuilder";
     } else {
         return $self->raw_body;
     }
@@ -395,30 +395,30 @@ __END__
 
 =head1 NAME
 
-Piglet::Request - Portable HTTP request object from PSGI env hash
+HTTPx::Weblet::Request - Portable HTTP request object from PSGI env hash
 
 =head1 SYNOPSIS
 
-  use Piglet::Request;
+  use HTTPx::Weblet::Request;
 
   my $env = shift; # PSGI env
-  my $req = Piglet::Request->new($env);
+  my $req = HTTPx::Weblet::Request->new($env);
 
   my $path_info = $req->path_info;
   my $query     = $req->param('query');
 
-  my $res = $req->new_response(200); # new Piglet::Response
+  my $res = $req->new_response(200); # new HTTPx::Weblet::Response
 
 =head1 DESCRIPTION
 
-L<Piglet::Request> provides a consistent API for request objects across
+L<HTTPx::Weblet::Request> provides a consistent API for request objects across
 web server environments.
 
 =head1 CAVEAT
 
 Note that this module is intended to be used by web application
 framework developers rather than application developers (end
-users). Writing your web application directly using Piglet::Request is
+users). Writing your web application directly using HTTPx::Weblet::Request is
 certainly possible but not recommended: it's like doing so with
 mod_perl's Apache::Request: yet too low level.
 
@@ -428,7 +428,7 @@ PSGI, or use L<HTTP::Engine> if you want to write a micro web server
 application.
 
 Also, even if you're a framework developer, you probably want to
-handle Cookies and file uploads in your own way: Piglet::Request gives
+handle Cookies and file uploads in your own way: HTTPx::Weblet::Request gives
 you a simple API to deal with these things but ultimately you probably
 want to implement those in your own code.
 
@@ -436,7 +436,7 @@ want to implement those in your own code.
 
 =head2 new
 
-    Piglet::Request->new( $psgi_env );
+    HTTPx::Weblet::Request->new( $psgi_env );
 
 =head1 ATTRIBUTES
 
@@ -500,8 +500,8 @@ be either a scalar or an arrayref containing scalars.
 =item uploads
 
 Returns a reference to a hash containing uploads. Values can be either a
-L<Piglet::Request::Upload> object, or an arrayref of
-L<Piglet::Request::Upload> objects.
+L<HTTPx::Weblet::Request::Upload> object, or an arrayref of
+L<HTTPx::Weblet::Request::Upload> objects.
 
 =item content_encoding
 
@@ -573,8 +573,8 @@ A convenient method to access $req->uploads.
 
   my $res = $req->new_response;
 
-Creates a new L<Piglet::Response> by default. Handy to remove
-dependency on L<Piglet::Response> in your code for easy subclassing and
+Creates a new L<HTTPx::Weblet::Response> by default. Handy to remove
+dependency on L<HTTPx::Weblet::Response> in your code for easy subclassing and
 duck typing in web application frameworks, as well as overriding
 Response generation in middlewares.
 
@@ -588,7 +588,7 @@ Tokuhiro Matsuno
 
 =head1 SEE ALSO
 
-L<Piglet::Response> L<HTTP::Request>, L<Catalyst::Request>
+L<HTTPx::Weblet::Response> L<HTTP::Request>, L<Catalyst::Request>
 
 =head1 LICENSE
 

@@ -1,4 +1,4 @@
-package Piglet::Request::BodyParser;
+package HTTPx::Weblet::Request::BodyParser;
 use strict;
 use warnings;
 BEGIN { require Carp }; # do not call Carp->import for performance

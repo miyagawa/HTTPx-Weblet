@@ -2,11 +2,11 @@ use strict;
 use warnings;
 use FindBin;
 use Test::More;
-use Piglet::Response;
+use HTTPx::Weblet::Response;
 use URI;
 
 sub r($) {
-    my $res = Piglet::Response->new(200);
+    my $res = HTTPx::Weblet::Response->new(200);
     $res->body(@_);
     return $res->finalize->[2];
 }

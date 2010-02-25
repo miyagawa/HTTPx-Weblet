@@ -1,8 +1,8 @@
 use strict;
 use Test::More;
-use Piglet::Request;
+use HTTPx::Weblet::Request;
 
-my $req = Piglet::Request->new(+{
+my $req = HTTPx::Weblet::Request->new(+{
     REQUEST_METHOD    => 'GET',
     SERVER_PROTOCOL   => 'HTTP/1.1',
     SERVER_PORT       => 80,
@@ -15,7 +15,7 @@ my $req = Piglet::Request->new(+{
     'psgi.url_scheme' => 'http',
 });
 
-isa_ok($req, 'Piglet::Request');
+isa_ok($req, 'HTTPx::Weblet::Request');
 
 is($req->address, '127.0.0.1', 'address');
 is($req->method, 'GET', 'method');
